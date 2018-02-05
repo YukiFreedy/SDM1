@@ -1,3 +1,8 @@
 <resources>
-    <string name="app_name">SDM1</string>
+    <string name="app_name">SDM1</string>4z
+    <string name="get_quotations">Get quotations</string>
+    <string name="favorite_quotations">Favorite quotations</string>
+    <string name="settings">Settings</string>
+    <string name="about">About</string>
+    <string name="aksjgas">Quotation Shake by\n\nVictor Ribera \n\nvicrivaz@inf.upv.es \n\n2018</string>
 </resources>
