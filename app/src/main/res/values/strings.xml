@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">SDM1</string>4z
+    <string name="app_name">SDM1</string>
     <string name="get_quotations">Get quotations</string>
     <string name="favorite_quotations">Favorite quotations</string>
     <string name="settings">Settings</string>
@@ -12,4 +12,7 @@
     <string name="get">GET</string>
     <string name="post">POST</string>
     <string name="author_info">Author info</string>
+    <string name="welcome_quotation">Hello %1s!\nPress Refresh to get a new quotation</string>
+    <string name="sample_quotation">This is a sample quotation</string>
+    <string name="sample_author">This is a sample author</string>
 </resources>
