@@ -14,4 +14,13 @@
     <string name="sample_quotation">Esto es una cita de ejemplo</string>
     <string name="sample_author">Esto es un autor de ejemplo</string>
     <string name="default_username">El sin nombre</string>
+    <string name="english">Inglés</string>
+    <string name="russian">Ruso</string>
+    <string name="problem_obtaining_data">Autor desconocido\nNo se han encontrados datos</string>
+    <string name="select_program">Elige un programa</string>
+    <string name="delete_quotation">¿Estas seguro que quieres borrar la cita?</string>
+    <string name="add_favorites">Añadir</string>
+    <string name="refresh">Refrescar</string>
+    <string name="deplete">Eliminar todo</string>
+    <string name="deplete_confirmation">¿Estas seguro de que quieres borrar todos tus favoritos?</string>
 </resources>

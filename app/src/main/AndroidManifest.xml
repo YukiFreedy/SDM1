@@ -19,14 +19,26 @@
         </activity>
         <activity
             android:name=".view.about.AboutActivity"
-            android:label="@string/about" />
+            android:label="@string/about"
+            android:parentActivityName=".view.dashboard.DashboardActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".view.dashboard.DashboardActivity" />
+        </activity>
+
         <activity
             android:name=".view.settings.SettingsActivity"
             android:label="@string/settings"
-            android:windowSoftInputMode="stateAlwaysHidden" />
+            android:parentActivityName=".view.dashboard.DashboardActivity"
+            android:windowSoftInputMode="stateAlwaysHidden">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".view.dashboard.DashboardActivity" />
+        </activity>
         <activity
             android:name=".view.favorite.FavoriteActivity"
-            android:label="@string/favorite_quotations">
+            android:label="@string/favorite_quotations"
+            android:parentActivityName=".view.dashboard.DashboardActivity">
             <intent-filter tools:ignore="AppLinkUrlError">
                 <action android:name="android.intent.action.VIEW" />
 
@@ -34,9 +46,18 @@
 
                 <data android:scheme="http" />
             </intent-filter>
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".view.dashboard.DashboardActivity" />
         </activity>
-        <activity android:name=".view.quotation.QuotationActivity"
-            android:label="@string/get_quotations"></activity>
+        <activity
+            android:name=".view.quotation.QuotationActivity"
+            android:label="@string/get_quotations"
+            android:parentActivityName=".view.dashboard.DashboardActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".view.dashboard.DashboardActivity" />
+        </activity>
     </application>
 
 </manifest>
