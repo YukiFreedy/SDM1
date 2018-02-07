@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">SDM1</string>
     <string name="get_quotations">Obtener cita</string>
     <string name="favorite_quotations">Citas favoritas</string>
     <string name="settings">Opciones</string>
