@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">SDM1</string>
+    <string name="get_quotations">Obtener cita</string>
+    <string name="favorite_quotations">Citas favoritas</string>
+    <string name="settings">Opciones</string>
+    <string name="about">Información</string>
+    <string name="made_by">Preguntas acudid a  Victor Ribera   vicrivaz@inf.upv.es   2018</string>
+    <string name="username">Nombre que identifica al usuario</string>
+    <string name="name_insert">Introduce tu nombre</string>
+    <string name="language">Las citas serán recibidas en el idioma seleccionado</string>
+    <string name="http_method">Las solicitudes web serán realizadas usando el metodo HTTP seleccionado</string>
+    <string name="author_info">Información del autor</string>
+    <string name="welcome_quotation">Hola %1s! Pulsa Refrescar para obtener una nueva cita</string>
+    <string name="sample_quotation">Esto es una cita de ejemplo</string>
+    <string name="sample_author">Esto es un autor de ejemplo</string>
+    <string name="default_username">El sin nombre</string>
+</resources>

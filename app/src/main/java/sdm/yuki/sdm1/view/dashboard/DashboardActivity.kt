@@ -6,6 +6,7 @@ import android.view.View
 import sdm.yuki.sdm1.R
 import sdm.yuki.sdm1.view.about.AboutActivity
 import sdm.yuki.sdm1.view.favorite.FavoriteActivity
+import sdm.yuki.sdm1.view.quotation.QuotationActivity
 import sdm.yuki.sdm1.view.settings.SettingsActivity
 
 class DashboardActivity : AppCompatActivity() {
@@ -18,7 +19,7 @@ class DashboardActivity : AppCompatActivity() {
     fun buttonClicked(view: View) {
         when (view.id) {
             R.id.buttonDashGetQuotations -> {
-
+                startActivity(QuotationActivity.newIntent(this))
             }
             R.id.buttonDashFavoriteQuotations -> {
                 startActivity(FavoriteActivity.newIntent(this))

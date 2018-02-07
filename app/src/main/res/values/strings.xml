@@ -1,18 +1,19 @@
 <resources>
-    <string name="app_name">SDM1</string>
+    <string name="app_name" translatable="false">SDM1</string>
     <string name="get_quotations">Get quotations</string>
     <string name="favorite_quotations">Favorite quotations</string>
     <string name="settings">Settings</string>
     <string name="about">About</string>
-    <string name="made_by">Quotation Shake by\n\nVictor Ribera \n\nvicrivaz@inf.upv.es \n\n2018</string>
+    <string name="made_by">Quotation Shake by  Victor Ribera   vicrivaz@inf.upv.es   2018</string>
     <string name="username">Name that identifies the user</string>
     <string name="name_insert">Insert your name</string>
     <string name="language">Quotations will be received in the selected language</string>
     <string name="http_method">Web requests will be performed using the selected HTTP method</string>
-    <string name="get">GET</string>
-    <string name="post">POST</string>
+    <string name="get" translatable="false">GET</string>
+    <string name="post" translatable="false">POST</string>
     <string name="author_info">Author info</string>
-    <string name="welcome_quotation">Hello %1s!\nPress Refresh to get a new quotation</string>
+    <string name="welcome_quotation">Hello %1s! Press Refresh to get a new quotation</string>
     <string name="sample_quotation">This is a sample quotation</string>
     <string name="sample_author">This is a sample author</string>
+    <string name="default_username">Nameless One</string>
 </resources>
