@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.preference.PreferenceManager
 import sdm.yuki.sdm1.R
 
 class AboutActivity : AppCompatActivity() {
@@ -17,8 +18,7 @@ class AboutActivity : AppCompatActivity() {
     companion object {
 
         fun newIntent(context: Context): Intent {
-            val intent = Intent(context, AboutActivity::class.java)
-            return intent
+            return Intent(context, AboutActivity::class.java)
         }
     }
 }

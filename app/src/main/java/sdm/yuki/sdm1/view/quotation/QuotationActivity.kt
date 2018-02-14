@@ -40,7 +40,7 @@ class QuotationActivity : AppCompatActivity() {
         textViewAuthor = findViewById(R.id.textViewQuoAuthor)
     }
 
-    fun onAddQuotation() {
+    private fun onAddQuotation() {
         textViewAuthor.text = getString(R.string.sample_author)
         textViewContent.text = getString(R.string.sample_quotation)
     }

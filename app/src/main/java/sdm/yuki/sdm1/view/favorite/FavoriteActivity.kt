@@ -71,10 +71,8 @@ class FavoriteActivity : AppCompatActivity() {
 
     private fun getMockQuotations(): ArrayList<Quotation> {
         var list = ArrayList<Quotation>()
-        var i = 0
-        while (i < 10) {
+        for (i in 0..20) {
             list.add(Quotation("Quotation " + i, "Author " + i))
-            i++
         }
         list[3].quoteAuthor = ""
         return list
