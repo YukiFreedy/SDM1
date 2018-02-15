@@ -25,7 +25,6 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".view.dashboard.DashboardActivity" />
         </activity>
-
         <activity
             android:name=".view.settings.SettingsActivity"
             android:label="@string/settings"
@@ -46,6 +45,7 @@
 
                 <data android:scheme="http" />
             </intent-filter>
+
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".view.dashboard.DashboardActivity" />
@@ -58,6 +58,9 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".view.dashboard.DashboardActivity" />
         </activity>
+        <activity
+            android:name=".view.better_settings.BetterSettingsActivity"
+            android:label="@string/settings"></activity>
     </application>
 
 </manifest>

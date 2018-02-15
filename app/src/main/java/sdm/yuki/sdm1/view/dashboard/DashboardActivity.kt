@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity
 import android.view.View
 import sdm.yuki.sdm1.R
 import sdm.yuki.sdm1.view.about.AboutActivity
+import sdm.yuki.sdm1.view.better_settings.BetterSettingsActivity
 import sdm.yuki.sdm1.view.favorite.FavoriteActivity
 import sdm.yuki.sdm1.view.quotation.QuotationActivity
 import sdm.yuki.sdm1.view.settings.SettingsActivity
@@ -25,7 +26,7 @@ class DashboardActivity : AppCompatActivity() {
                 startActivity(FavoriteActivity.newIntent(this))
             }
             R.id.buttonDashSettings -> {
-                startActivity(SettingsActivity.newIntent(this))
+                startActivity(BetterSettingsActivity.newIntent(this))
             }
             R.id.buttonDashAbout -> {
                 startActivity(AboutActivity.newIntent(this))

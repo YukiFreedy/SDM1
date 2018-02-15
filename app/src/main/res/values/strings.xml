@@ -7,14 +7,14 @@
     <string name="made_by">Quotation Shake by  Victor Ribera   vicrivaz@inf.upv.es   2018</string>
     <string name="username">Name that identifies the user</string>
     <string name="name_insert">Insert your name</string>
-    <string name="language">Quotations will be received in the selected language</string>
-    <string name="http_method">Web requests will be performed using the selected HTTP method</string>
+    <string name="language">Quotations reception language</string>
+    <string name="http_method">HTTP request method</string>
     <string name="get" translatable="false">GET</string>
     <string name="post" translatable="false">POST</string>
     <string name="author_info">Author info</string>
     <string name="welcome_quotation">Hello %1s! Press Refresh to get a new quotation</string>
-    <string name="sample_quotation">This is a sample quotation</string>
-    <string name="sample_author">This is a sample author</string>
+    <string name="sample_quotation">Sample quote %1d</string>
+    <string name="sample_author">Sample author %1d</string>
     <string name="default_username">Nameless One</string>
     <string name="english">English</string>
     <string name="russian">Russian</string>
@@ -25,4 +25,9 @@
     <string name="refresh">Refresh</string>
     <string name="deplete">Clear All</string>
     <string name="deplete_confirmation">Are you sure that you want to delete ALL your favourite quotations?</string>
+    <string name="more_info">Additional Information</string>
+    <string name="database_sqlite">SQLite</string>
+    <string name="database_room">Room</string>
+    <string name="database_method">Database Method</string>
+    <string name="databases">Databases</string>
 </resources>

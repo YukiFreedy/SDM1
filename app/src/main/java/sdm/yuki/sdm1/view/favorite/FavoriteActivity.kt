@@ -7,11 +7,10 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.view.Menu
 import android.widget.ListView
-import org.jetbrains.anko.alert
-import org.jetbrains.anko.cancelButton
-import org.jetbrains.anko.okButton
-import org.jetbrains.anko.toast
+import org.jetbrains.anko.*
 import sdm.yuki.sdm1.R
+import sdm.yuki.sdm1.databases.MySqliteOH
+import sdm.yuki.sdm1.databases.QuotationDatabase
 import sdm.yuki.sdm1.persistance.Quotation
 import sdm.yuki.sdm1.utils.QuotationAdapter
 import sdm.yuki.sdm1.utils.Values
@@ -22,13 +21,20 @@ class FavoriteActivity : AppCompatActivity() {
     private lateinit var adapter: QuotationAdapter
     private lateinit var menu: Menu
 
+    private lateinit var db: MySqliteOH
+    private lateinit var room: QuotationDatabase
+    private var useRoom = false
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_favorite)
         val listView = findViewById<ListView>(R.id.listViewFavContainer)
-        quotationList = getMockQuotations()
+        db = MySqliteOH.getInstance(this)
+        room = QuotationDatabase.getInstance(this)
+        quotationList = db.allQuotations as ArrayList<Quotation>
         adapter = QuotationAdapter(this, R.layout.quotation_list_row, quotationList, this)
         listView.adapter = adapter
+        useRoom = defaultSharedPreferences.getString(Values.DATABASE_TAG, "1") == "1"
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -38,6 +44,7 @@ class FavoriteActivity : AppCompatActivity() {
             depleteAlert()
             true
         }
+        refresh()
         return super.onCreateOptionsMenu(menu)
     }
 
@@ -45,7 +52,10 @@ class FavoriteActivity : AppCompatActivity() {
         alert {
             title = getString(R.string.deplete_confirmation)
             okButton {
-                quotationList.clear()
+                if (!useRoom)
+                    db.removeAllQuotations()
+                else
+                    room.quotationDao().removeAllQuotations()
                 refresh()
             }
             cancelButton { }
@@ -53,8 +63,15 @@ class FavoriteActivity : AppCompatActivity() {
     }
 
     private fun refresh() {
-        adapter.notifyDataSetChanged()
         menu.getItem(0).isVisible = !quotationList.isEmpty()
+        if (!useRoom)
+            quotationList = db.allQuotations as ArrayList<Quotation>
+        else
+            quotationList = room.quotationDao().allQuotations as ArrayList<Quotation>
+        adapter = QuotationAdapter(this, R.layout.quotation_list_row, quotationList, this)
+        val listView = findViewById<ListView>(R.id.listViewFavContainer)
+        listView.adapter = adapter
+        adapter.notifyDataSetChanged()
     }
 
     fun onAuthorClicked(position: Int) {
@@ -89,7 +106,10 @@ class FavoriteActivity : AppCompatActivity() {
         alert {
             title = getString(R.string.delete_quotation)
             okButton {
-                quotationList.removeAt(position)
+                if (!useRoom)
+                    db.removeQuotation(quotationList[position])
+                else
+                    room.quotationDao().removeQuotation(quotationList[position])
                 refresh()
             }
             cancelButton { }
