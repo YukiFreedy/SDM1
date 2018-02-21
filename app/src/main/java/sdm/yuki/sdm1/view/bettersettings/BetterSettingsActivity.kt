@@ -1,10 +1,9 @@
-package sdm.yuki.sdm1.view.better_settings
+package sdm.yuki.sdm1.view.bettersettings
 
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import sdm.yuki.sdm1.R
-import sdm.yuki.sdm1.view.quotation.QuotationActivity
 
 class BetterSettingsActivity : AppCompatPreferenceActivity() {
 

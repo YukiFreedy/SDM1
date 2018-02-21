@@ -3,6 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="sdm.yuki.sdm1">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -59,7 +62,7 @@
                 android:value=".view.dashboard.DashboardActivity" />
         </activity>
         <activity
-            android:name=".view.better_settings.BetterSettingsActivity"
+            android:name=".view.bettersettings.BetterSettingsActivity"
             android:label="@string/settings"></activity>
     </application>
 

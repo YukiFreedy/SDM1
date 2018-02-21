@@ -3,11 +3,12 @@ package sdm.yuki.sdm1.view.quotation
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import android.view.Menu
 import android.widget.TextView
-import org.jetbrains.anko.*
+import org.jetbrains.anko.defaultSharedPreferences
 import sdm.yuki.sdm1.R
 import sdm.yuki.sdm1.databases.MySqliteOH
 import sdm.yuki.sdm1.databases.QuotationDatabase
@@ -28,6 +29,8 @@ class QuotationActivity : AppCompatActivity() {
 
     private var useRoom = false
 
+    private var handler = Handler()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_quotation)
@@ -35,9 +38,9 @@ class QuotationActivity : AppCompatActivity() {
 
         useRoom = defaultSharedPreferences.getString(Values.DATABASE_TAG, "0") == "1"
 
-        if(savedInstanceState == null){
+        if (savedInstanceState == null) {
             setUsername()
-        }else{
+        } else {
             textViewContent.text = savedInstanceState.getString("author")
             textViewAuthor.text = savedInstanceState.getString("content")
             quotationsReceived = savedInstanceState.getInt("count")
@@ -53,16 +56,16 @@ class QuotationActivity : AppCompatActivity() {
         super.onSaveInstanceState(outState)
     }
 
-    private fun setUsername(){
+    private fun setUsername() {
         try {
             var username = defaultSharedPreferences.all[Values.USERNAME_TAG] as String
-            if(username.isEmpty())
+            if (username.isEmpty())
                 username = getString(R.string.default_username)
 
             textViewContent.text =
                     textViewContent.text.replace(
                             Regex("%1s"), username
-                            )
+                    )
         } catch (e: Exception) {
             Log.d("exc", e.message)
             textViewContent.text =
@@ -78,18 +81,30 @@ class QuotationActivity : AppCompatActivity() {
         menu.getItem(0).isVisible = addVisible
         menu.getItem(0).setOnMenuItemClickListener {
             menu.getItem(0).isVisible = false
-            if(!useRoom)
-                MySqliteOH.getInstance(this).addQuotation(currentQuotation)
-            else
-                QuotationDatabase.getInstance(this).quotationDao().addQuotation(currentQuotation)
+            Thread {
+                if (!useRoom)
+                    MySqliteOH.getInstance(this).addQuotation(currentQuotation)
+                else
+                    QuotationDatabase.getInstance(this).quotationDao().addQuotation(currentQuotation)
+            }.start()
             true
         }
         menu.getItem(1).setOnMenuItemClickListener {
-            currentQuotation = onAddQuotation()
-            if(!useRoom)
-                menu.getItem(0).isVisible = !MySqliteOH.getInstance(this).alreadyInDatabase(currentQuotation)
-            else
-                menu.getItem(0).isVisible = QuotationDatabase.getInstance(this).quotationDao().getQuotation(currentQuotation!!.quoteText) == null
+            val thread = Thread {
+                currentQuotation = onAddQuotation()
+                if (!useRoom) {
+                    val isInDb = !MySqliteOH.getInstance(this).alreadyInDatabase(currentQuotation)
+                    handler.post {
+                        menu.getItem(0).isVisible = isInDb
+                    }
+                } else {
+                    val alreadyInFav = QuotationDatabase.getInstance(this).quotationDao().getQuotation(currentQuotation!!.quoteText) == null
+                    handler.post {
+                        menu.getItem(0).isVisible = alreadyInFav
+                    }
+                }
+            }
+            thread.start()
             true
         }
         return super.onCreateOptionsMenu(menu)
@@ -101,8 +116,11 @@ class QuotationActivity : AppCompatActivity() {
     }
 
     private fun onAddQuotation(): Quotation {
-        textViewAuthor.text = getString(R.string.sample_author).replace(Regex("%1d"), quotationsReceived.toString())
-        textViewContent.text = getString(R.string.sample_quotation).replace(Regex("%1d"), quotationsReceived.toString())
+
+        handler.post {
+            textViewAuthor.text = getString(R.string.sample_author).replace(Regex("%1d"), quotationsReceived.toString())
+            textViewContent.text = getString(R.string.sample_quotation).replace(Regex("%1d"), quotationsReceived.toString())
+        }
         val quotation = Quotation(textViewContent.text.toString(), textViewAuthor.text.toString())
         quotationsReceived++
         return quotation

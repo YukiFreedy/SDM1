@@ -1,4 +1,4 @@
-package sdm.yuki.sdm1.view.better_settings
+package sdm.yuki.sdm1.view.bettersettings
 
 import android.content.res.Configuration
 import android.os.Bundle
